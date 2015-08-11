@@ -1,0 +1,93 @@
+body {
+  background-color: #007633;
+  color: #60D5AC;
+  font-family: 'Monaco', monospace;
+}
+
+h1 {
+
+  font-family: 'Lato', sans-serif;
+  color: #DFEBE2;
+  font-weight:900;
+}
+
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+li {
+  padding-left: 1em;
+  text-indent: -1em;
+}
+
+li:before {
+  content: ">";
+  padding-right: 5px;
+}
+
+a {
+  color: #60D5AC;
+
+}
+
+#content{
+  position:relative;
+  width:80em;
+
+}
+
+#menu{
+  width:40em;
+  margin: 0 0 5em 0;
+}
+
+
+#information{
+  position: absolute;
+  left: 40em;
+  width:40em;
+  margin: 0 auto;
+}
+
+.hidden{
+  display: none;
+}
+
+.option{
+  display: none;
+}
+.flash {
+
+  -moz-animation: flash 1s ;
+  -moz-animation-iteration-count: 2000;
+
+  -webkit-animation: flash 1s ;
+  -webkit-animation-iteration-count: 2000;
+
+  -ms-animation: flash 1s ;
+  -ms-animation-iteration-count: 2000;
+
+}
+
+@-webkit-keyframes flash {
+  0% { background-color:none;}
+  50% { background-color:none;}
+  51% {background-color:#60D5AC;}
+  100% {background-color:#60D5AC;}
+  
+}
+
+@-moz-keyframes flash {
+  0% { background-color:none;}
+  50% { background-color:none;}
+  51% {background-color:#60D5AC;}        
+  100% {background-color:#60D5AC;}        
+}
+
+@-ms-keyframes flash {
+  0% { background-color:none;}
+  50% { background-color:none;}
+  51% {background-color:#60D5AC;}        
+  100% {background-color:#60D5AC;}        
+}
