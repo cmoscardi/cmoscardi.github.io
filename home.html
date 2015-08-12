@@ -40,9 +40,13 @@ title: home
 
     <div class="hidden" id="blog">
       <h1 id="nomen">Christian Moscardi</h1>
-      <br> <br> <br>
-      <h2>Coming soon!</h2>
-
+      <ul>
+        {% for post in site.posts %}
+          <li>
+            <a href="{{post.url}}"> {{post.title}}</a>
+          </li>
+        {% endfor %}
+      </ul>
 
     </div>
   </div>
@@ -62,6 +66,12 @@ title: home
 
 </div> <!--end content -->
 <script>
-  $("#message").show();
-  $("#message").type({delay:250, maxInterval:50,callback:homepage_input_handler});
+  if(QueryParams['noType'] == 'true'){
+    $("#message").show();
+    homepage_input_handler();
+  }
+  else {
+    $("#message").show();
+    $("#message").type({delay:250, maxInterval:50,callback:homepage_input_handler});
+  }
 </script>   

@@ -1,0 +1,34 @@
+---
+layout: basic
+title: blog
+---
+<ul>
+  <li id="0">
+    0) 
+    <a href="/home.html?noType=true">Back to Home</a>
+  </li>
+  {% for post in site.posts %}
+  <li id="{{forloop.index}}">
+    {{ forloop.index }})
+    <a href="{{post.url}}"> {{post.title}}</a>
+  </li>
+  {% endfor %}
+  <li>
+    <span id="input"></span>
+    <span id="cursor">_</span>
+  </li>
+</ul>
+<script>
+  $("#cursor").addClass("flash");
+  $("body").keydown( function(event) {
+    if(event.keyCode==13){
+      var choice = $("#input").text();
+      alert(choice);
+      window.location = $("#" + choice + " a").attr('href');
+    }
+    else {
+      $("#input").text(String.fromCharCode(event.keyCode));
+    }
+  });
+  fix_backspace();
+</script>   
