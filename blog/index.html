@@ -23,7 +23,6 @@ title: blog
   $("body").keydown( function(event) {
     if(event.keyCode==13){
       var choice = $("#input").text();
-      alert(choice);
       window.location = $("#" + choice + " a").attr('href');
     }
     else {
