@@ -4,18 +4,16 @@
   {% include head.html %}
 
   <body>
+    <div id="nav">
+      {% include nav.html %}
+      <div class="clear">
 
-    {% include header.html %}
-
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
       </div>
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
     </div>
 
-    {% include footer.html %}
-
+    <div id="content">
+      {{ content }}
+    </div>
   </body>
 
 </html>

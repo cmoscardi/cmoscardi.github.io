@@ -1,0 +1,36 @@
+<div id="menu">   
+  <ul style:"display:none;">
+    {% if page.pre_message %}
+    <li id="message">{{page.pre_message}}</li>
+    {% endif %}
+    {% if page.show_posts %}
+      <li id="0">
+        0) 
+        <a href="/home.html?noType=true">Back to Home</a>
+      </li>
+      {% for post in site.posts %}
+        <li id="{{forloop.index}}">
+          {{ forloop.index }})
+          <a href="{{post.url}}"> {{post.title}}</a>
+        </li>
+      {% endfor %}
+    {% else %}
+      {% for link in page.links %}
+      <li id="{{forloop.index}}" class="option">
+        <a href="{{link.href}}">
+          {{forloop.index}}) {{link.name}}
+        </a>
+      </li>
+      {% endfor %}
+    {% endif %}
+    <li class="option"><span id="input" ></span><span id="cursor">_</span></li>
+  </ul>
+</div>
+<script>
+  if($("#message").length > 0 && QueryParams['noType'] != 'true'){
+    $("#message").type({delay:500, maxInterval:50, callback:nav_input_handler});
+  }
+  else {
+    nav_input_handler();
+  }
+</script>
