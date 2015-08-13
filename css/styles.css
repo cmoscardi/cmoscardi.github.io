@@ -1,4 +1,15 @@
+div:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+div { display: inline-block; margin: 0 0 8px 0; }
+/* Hides from IE-mac \*/
+html div { height: 1%; }
+div { display: block; }
+
+.clear {
+  clear: both;
+}
+
 body {
+  width: 100%;
   background-color: #007633;
   color: #60D5AC;
   font-family: 'Monaco', monospace;
@@ -28,27 +39,32 @@ li:before {
 
 a {
   color: #60D5AC;
-
+  text-decoration: none;
+}
+.underline {
+  text-decoration: underline;
 }
 
-#content{
-  position:relative;
-  width:80em;
-
+input {
+  width: 20px;
+  background-color: #007633;
+  color: #60D5AC;
+  border: none;
 }
 
-#menu{
-  width:40em;
-  margin: 0 0 5em 0;
+#nav {
+  position: relative; 
+  float: left;
+  width: 30%;
+}
+#content {
+  position: relative;
+  float: left;
+  width: 60%;
 }
 
 
-#information{
-  position: absolute;
-  left: 40em;
-  width:40em;
-  margin: 0 auto;
-}
+
 
 .hidden{
   display: none;
