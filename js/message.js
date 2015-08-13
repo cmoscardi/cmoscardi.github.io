@@ -43,6 +43,7 @@ var hide_all = function() {
 
 var nav_input_handler = function() {
   $(".option").show();
+  $(".content").show();
   $("#cursor").addClass("flash");
 
   $("body").keydown( function(event) {

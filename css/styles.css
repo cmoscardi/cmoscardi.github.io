@@ -15,6 +15,10 @@ body {
   font-family: 'Monaco', monospace;
 }
 
+.content {
+  display: none;
+}
+
 h1 {
 
   font-family: 'Lato', sans-serif;
