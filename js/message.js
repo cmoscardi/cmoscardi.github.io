@@ -12,6 +12,15 @@ var QueryParams = (function(a) {
     return b;
 })(window.location.search.substr(1).split('&'));
 
+var fix_backspace = function() {
+
+  $("body").keydown( function(event) {
+    if(event.which==8){
+      event.preventDefault();
+      $("#input").text("");
+    }
+  });
+}
 
 
 var index_input_handler = function() {
@@ -47,8 +56,5 @@ var nav_input_handler = function() {
 
     $("#input").text(String.fromCharCode(event.keyCode));
   });
+  fix_backspace();
 }
-
-
-
-
