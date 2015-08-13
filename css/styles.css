@@ -39,10 +39,9 @@ li:before {
 
 a {
   color: #60D5AC;
-  text-decoration: none;
 }
-.underline {
-  text-decoration: underline;
+.nounderline {
+  text-decoration: none;
 }
 
 input {
