@@ -63,6 +63,15 @@ input {
   width: 60%;
 }
 
+.highlight {
+  background-color: black;
+  color: #00ff00;
+  padding-top: 10px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
 
 
 
