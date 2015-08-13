@@ -56,6 +56,11 @@ input {
   float: left;
   width: 30%;
 }
+#menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 #content {
   position: relative;
   float: left;
