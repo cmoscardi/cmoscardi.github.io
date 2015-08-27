@@ -61,7 +61,6 @@ input {
   width: 30%;
 }
 #menu {
-  position: fixed;
   top: 0;
   left: 0;
 }
@@ -69,6 +68,15 @@ input {
   position: relative;
   float: left;
   width: 60%;
+}
+
+@media (max-width: 1350px) {
+  #nav {
+    width: 100%;
+  }
+  #content {
+    width: 100%;
+  }
 }
 
 .highlight {
@@ -123,4 +131,25 @@ input {
   50% { background-color:none;}
   51% {background-color:#60D5AC;}        
   100% {background-color:#60D5AC;}        
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.clearfix {
+    display: table;
+}
+
+html[xmlns] .clearfix {
+    display: block;
+}
+
+* html .clearfix {
+    height: 1%;
 }
