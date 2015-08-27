@@ -10,7 +10,7 @@ div { display: block; }
 
 body {
   width: 100%;
-  background-color: #007633;
+  background-color: #003c1a;
   color: #60D5AC;
   font-family: 'Monaco', monospace;
 }
@@ -61,6 +61,7 @@ input {
   width: 30%;
 }
 #menu {
+  position: fixed;
   top: 0;
   left: 0;
 }
@@ -77,12 +78,17 @@ input {
   #content {
     width: 100%;
   }
+  #menu {
+    position: static;
+  }
 }
 
 .highlight {
   background-color: black;
   color: #00ff00;
   padding-top: 10px;
+  padding-left: 25px;
+  padding-bottom: 10px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
