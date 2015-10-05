@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Integrating Chef and Google App Engine"
+title:  "Chef and Google App Engine"
 date:   2015-10-04 17:20:40
 categories: blog
 ---
