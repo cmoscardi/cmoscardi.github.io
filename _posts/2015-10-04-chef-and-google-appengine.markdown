@@ -27,12 +27,12 @@ Here's what that byte-padding looks like (props to [this post](http://engineerin
 
 {% highlight python %}
 def _emsa_pkcs1_v1_5_encode(m, em_len):
-  """
-  em_len: # of bytes in the key
-  m : message
-  """
-  ps = '\xff' * (em_len - len(m) - 3)
-  return '\x00\x01' + ps + '\x00' + m
+    """
+    em_len: # of bytes in the key
+    m : message
+    """
+    ps = '\xff' * (em_len - len(m) - 3)
+    return '\x00\x01' + ps + '\x00' + m
 {% endhighlight %}
 
 With this out of the way, we thought we were in the clear, until...
