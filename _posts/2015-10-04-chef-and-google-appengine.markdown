@@ -44,4 +44,6 @@ We still haven't found a great solution to this, so we just ensure that locally,
 
 
 ## Solution: An Open Source Library!
-We open-sourced the library. It uses version `2.1.0` of `requests` (the last version that [can be used](http://stackoverflow.com/questions/21605328/python-requests-on-google-app-engine-not-working-for-https) on GAE), and the latest PyCrypto (2.6.1 as of this writing). It works swimmingly, though only on the actual GAE environment if you don't trust your Chef Server's SSL certificate.
+We open-sourced the code we use to hopefully save other devs this headache. It uses version `2.1.0` of `requests` (the last version that [can be used](http://stackoverflow.com/questions/21605328/python-requests-on-google-app-engine-not-working-for-https) on GAE), and the latest PyCrypto (2.6.1 as of this writing). It works swimmingly, though only on the actual GAE environment if you don't trust your Chef Server's SSL certificate.
+
+Check it out [on github](https://github.com/thedataincubator/chef_gae) - you can `pip install chef_gae` as well. Pull requests always welcome!
