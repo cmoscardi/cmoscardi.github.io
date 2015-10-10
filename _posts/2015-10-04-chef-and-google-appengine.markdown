@@ -5,7 +5,7 @@ date:   2015-10-04 17:20:40
 categories: blog
 ---
 
-Anyone who's ever tried to write a nontrivial application on Google Appengine has encountered at least seven\* design decisions that have led to serious head-scratching moments. One of those happened to me about a month ago, while integrating [Chef](https://www.chef.io/chef/) into our course at [The Data Incubator](www.thedataincubator.com). Our goal was to allow for one-click spinning up (on [DigitalOcean](http://digitalocean.com)'s cloud) and monitoring of our Fellows' course machines, already under Chef management. 
+Anyone who's ever tried to write a nontrivial application on Google App Engine has encountered at least seven\* design decisions that have led to serious head-scratching moments. One of those happened to me about a month ago, while integrating [Chef](https://www.chef.io/chef/) into our course at [The Data Incubator](www.thedataincubator.com). Our goal was to allow for one-click spinning up (on [DigitalOcean](http://digitalocean.com)'s cloud) and monitoring of our Fellows' course machines, already under Chef management. 
 
 \* No basis in fact - there are probably more than seven. It should be noted that the Google Cloud Platform is going to greatly improve this situation by allowing you to deploy Docker containers - woohoo!
 
