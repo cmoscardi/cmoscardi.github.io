@@ -63,6 +63,10 @@ var nav_input_handler = function() {
 }
 
 $(function(){
+  if($(".home").length > 0){
+    $("#message").type({delay:500, maxInterval:50, callback:index_input_handler});
+    return;
+  }
   if($("#message").length > 0 && QueryParams['noType'] != 'true'){
     $("#message").type({delay:500, maxInterval:50, callback:nav_input_handler});
   }
