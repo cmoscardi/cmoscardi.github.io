@@ -26,11 +26,3 @@
     <li class="option"><span id="input" ></span><span id="cursor">_</span></li>
   </ul>
 </div>
-<script>
-  if($("#message").length > 0 && QueryParams['noType'] != 'true'){
-    $("#message").type({delay:500, maxInterval:50, callback:nav_input_handler});
-  }
-  else {
-    nav_input_handler();
-  }
-</script>

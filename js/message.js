@@ -58,4 +58,15 @@ var nav_input_handler = function() {
     $("#input").text(String.fromCharCode(event.keyCode));
   });
   fix_backspace();
+  $(".content").show();
+  $(".content").css("display", "block");
 }
+
+$(function(){
+  if($("#message").length > 0 && QueryParams['noType'] != 'true'){
+    $("#message").type({delay:500, maxInterval:50, callback:nav_input_handler});
+  }
+  else {
+    nav_input_handler();
+  }
+});
