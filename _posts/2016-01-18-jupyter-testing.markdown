@@ -28,7 +28,7 @@ In terms of testing code execution, here's what our testing process looks like a
 As it turns out, programmatic execution of Jupyter notebooks is pretty straightforward. You can run the command:
 
 {% highlight bash %}
-ipython nbconvert --to notebook --execute --ExecutePreprocessor.timeout=60\ 
+jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=60\ 
                   --output out_file in_file
 {% endhighlight%}
 
@@ -39,7 +39,7 @@ import os
 import subprocess
 import tempfile
 
-from IPython import nbformat
+import nbformat
 
 def _notebook_run(path):
     """Execute a notebook via nbconvert and collect output.
@@ -48,7 +48,7 @@ def _notebook_run(path):
     dirname, __ = os.path.split(path)
     os.chdir(dirname)
     with tempfile.NamedTemporaryFile(suffix=".ipynb") as fout:
-        args = ["ipython", "nbconvert", "--to", "notebook", "--execute",
+        args = ["nbconvert", "--to", "notebook", "--execute",
           "--ExecutePreprocessor.timeout=60",
           "--output", fout.name, path]
         subprocess.check_call(args)
