@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Dependency minification and de-versioning with anaconda"
+title:  "Anaconda Dependency Minification"
 date:   2016-05-18 17:20:40
 categories: blog
 ---
@@ -15,8 +15,6 @@ Dependencies and graphing them
 --
 So, maybe you've thought about dependencies before. We have. As it turns out, we can think of dependencies as a directed acyclic graph (often called by their abbreviation, DAG).\* In this graph, each package is a node, and if package X depends on package Y, we have a (directed) edge (X, Y). 
 
-[cute diagram here]
-
 See those nodes at the far left - the ones that represent packages which aren't dependencies for any other packages? We call those "source nodes" (or source packages, for the purposes of this explanation). Those are the nodes we care about, as they represent the packages we really care about. To find this set of packages, we can take the complement (in graph theory parlance, "the cut") of the subset of all nodes which are specified as another package's dependency. This leaves us with our source packages.
 
 
@@ -26,17 +24,59 @@ Code
 --
 Here's how we do this in practice.
 
-1. Parse all packages/versions in `environment.yml`
+- Parse all packages/versions in `environment.yml`
 
-2. Get the dependencies of each package and store them in a set (so we know which packages appeared as a dependency at least once).
+- Get the dependencies of each package and store them in a set (so we know which packages appeared as a dependency at least once).
 
 We do this with `conda info [package_name]`. Here's a sample output:
-```
+{% highlight bash %}
+[cmoscardi.github.io]$ conda info numpy
+Fetching package metadata: ....
 
-```
+numpy 1.5.1 py27_pro0
+---------------------
+file name   : numpy-1.5.1-py27_pro0.tar.bz2
+name        : numpy
+version     : 1.5.1
+build number: 0
+build string: py27_pro0
+channel     : defaults
+size        : 3.4 MB
+build_target: pro
+date        : 2012-11-09
+features    : mkl
+license     : BSD
+md5         : 7379c7071ed6c29568a4bb7ca22efc57
+installed environments:
+dependencies:
+    mkl 10.3
+    nose
+    python 2.7*
+
+numpy 1.5.1 py27_ce0
+--------------------
+file name   : numpy-1.5.1-py27_ce0.tar.bz2
+name        : numpy
+version     : 1.5.1
+build number: 0
+build string: py27_ce0
+channel     : defaults
+size        : 4.6 MB
+build_target: ce
+date        : 2012-11-09
+license     : BSD
+md5         : f53b0807eac1e45910dd2ef5e1da4b97
+installed environments:
+dependencies:
+    nose
+    python 2.7*
+
+
+.....
+{% endhighlight %}
 As you can see in the source code, we chose to use python to scrape this output.
 
-3. Take the complement of all requirements and every package that appears as a dependency, making sure to preserve version for these "important" packages.
+- Take the complement of all requirements and every package that appears as a dependency, making sure to preserve version for these "important" packages.
 It's a simple snippet:
 
 {% highlight python %}
