@@ -64,6 +64,7 @@ input {
   position: fixed;
   top: 0;
   left: 0;
+  width: 30%;
 }
 #content {
   position: relative;
@@ -71,7 +72,7 @@ input {
   width: 60%;
 }
 
-@media (max-width: 1350px) {
+@media (max-width: 1316px) {
   #nav {
     width: 100%;
   }
@@ -80,6 +81,7 @@ input {
   }
   #menu {
     position: static;
+    width: 100%;
   }
 }
 
