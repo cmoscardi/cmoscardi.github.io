@@ -76,21 +76,26 @@ Another popular method is [repeat-sales](https://www.investopedia.com/terms/r/re
 As an example, let's say we develop a linear model for housing price:
 
 $$
-price = x \cdot bedrooms + y \cdot n_bathrooms + z \cdot sale_year
+price = x \cdot bedrooms + y \cdot bathrooms + z \cdot sale\_year
 $$
+
 (caution! this is a bad model for a few reasons, but this is an example)
 
 And then, suppose we use this model to look at the sale of a 2br, 1bath apartment in 2007 and 2010:
 
 $$
 price_{2007} = x \ cdot 2 + y \ cdot 1 + z \ cdot 2007
+$$
+
+$$
 price_{2010} = x \ cdot 2 + y \ cdot 1 + z \ cdot 2010
 $$
 
 Now, if we want to look at the _change_, we could subtract the 2010 price from the 2007 price. Doing so with the model gives us:
 
 $$
-\delta_{price} = price_{2010} - price_{2007} = x \cdot (2 - 2) + y \cdot (1 - 1) + z \cdot (2010 - 2007)
+\delta_{price} = price_{2010} - price_{2007} 
+= x \cdot (2 - 2) + y \cdot (1 - 1) + z \cdot (2010 - 2007)
 \delta_{price} = z \cdot (2010 - 2007)
 $$
 
