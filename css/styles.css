@@ -36,7 +36,7 @@ li {
   text-indent: -1em;
 }
 
-li:before {
+ul li:before {
   content: ">";
   padding-right: 5px;
 }

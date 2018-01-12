@@ -43,7 +43,7 @@ If you want to dive into the data loading and munging, it's all [on github](http
 
 ## The methods: experimental design!
 
-This may have been my favorite aspect of the project. I haven't spent a ton of time digging through the nuances of experimental designs, so it was fun to learn more. I had been exposed to the following, traditional, experimental setup:
+This may have been my favorite aspect of the project. I haven't spent a ton of time digging through the nuances of experimental designs, so it was fun to learn more. I had exposure to the following, traditional, experimental setup, which we'll build off of:
 
 1. A group of people is partitioned into "treatment" and "control" groups.
 2. The "treatment" group receives some sort of "intervention" - think, a new drug to lower cholestorol - and some "outcome" is measured - think, cholestorol levels.
@@ -53,10 +53,10 @@ This may have been my favorite aspect of the project. I haven't spent a ton of t
 
 This is pretty much the experimental design you'll learn in statistics 101 (that's more-or-less where I first learned about it).
 
-In the social sciences, things are a little different. Setting up an "experiment" around a question like the impact of a subway line on real estate values is tough, because we can't explicitly _control_ in the traditional sense (as in the drug study example above). While it would be amusing, we can't separate out some apartments and deny those units access to the Second Avenue Subway, and then measure how their values are impacted compared to those that do have access. Instead, we have to be a little bit more clever. Our team's digging came up with a few possible experimental designs. 
+In the social sciences, things are a little different. Setting up an "experiment" around a question like the impact of a subway line on real estate values is tough, because we can't explicitly _control_ in the traditional sense (as in the drug study example above). We can't separate out some apartments and deny those units access to the Second Avenue Subway, and then measure how their values are impacted compared to those that do have access. Instead, we have to be a little bit more clever. Our team's digging came up with a few possible experimental designs. 
 
 ### The initial method: Difference-in-Difference
-One of the most popular for this sort of study is a [difference-in-differences](https://en.wikipedia.org/wiki/Difference_in_differences). The idea with difference-in-differences is we want to set up something as close to an experiment as we possibly can, but with the observational data that we have. Thus, in our case, we'll pick a "treatment" zone -- an area we assume will be affected by the line's opening, then try to find a "control" zone that has very similar characteristics aside from the fact that the Second Avenue Subway didn't just open right next to it. We can also control for other factors that may differ between the two areas (in the sense that one sets up controls in linear regression) - once we've done that, we can measure the average sale price before and after, in our treatment and control zones, and compare how big the change was between the two areas.
+One of the most popular for this sort of study is a [difference-in-differences](https://en.wikipedia.org/wiki/Difference_in_differences). The idea with difference-in-differences is we want to set up something as close to an experiment as we possibly can, but with the observational data that we have. Thus, in our case, we'll pick a "treatment" zone -- an area we assume will be affected by the line's opening, then try to find a "control" zone that has very similar characteristics aside from the fact that the Second Avenue Subway didn't just open right next to it. We can also control for other factors that may differ between the two areas or impact price (in the sense that one sets up controls in linear regression) - once we've done that, we can measure the average sale price before and after, in our treatment and control zones, and compare how big the change was between the two areas.
 <div>
   <div style="float: left; width: 30%;">
     <img src="https://github.com/sebscho/CA_SAS/blob/master/Figures/distance%20reduced.png?raw=true" style="width: 90%; display: inline; margin-left: 20px;" />
@@ -65,15 +65,46 @@ One of the most popular for this sort of study is a [difference-in-differences](
     <img src="/static/images/sas_did.png" style="width: 100%;" />
   </div>
 </div>
-The above images visually explain the Difference-in-Differences setup. In the first, we can see both our choice of study area - roughly speaking, the Upper East Side - as well as our choice of treatment and control areas. Specifically, we consider all buildings east of Second Avenue (the highlighted area) to be members of the treatment zone, while the rest of the Upper East Side (the washed out area) is the "control zone." By making this choice, we are saying that everything west of Second Avenue is close enough to the 4/5/6 line that its value was not impacted by the opening of the line. This may not be strictly true (e.g. the Second Avenue line is far more pleasant to ride at rush hour, from personal experience), but we suspect it is a safe assumption to make.
+The above images visually explain the Difference-in-Differences setup. In the first, we can see both our choice of study area - roughly speaking, the Upper East Side - as well as our choice of treatment and control areas. Specifically, we consider all buildings east of Second Avenue (the highlighted area) to be members of the treatment zone, while the rest of the Upper East Side (the washed out area) is the "control zone." By making this choice, we are saying that everything west of Second Avenue is close enough to the 4/5/6 line that its value was not impacted by the opening of the line. This may not be strictly true (e.g. the Second Avenue line is far more pleasant to ride at rush hour, from personal experience, and maybe it will help decrowd the 4/5/6 line), but we suspect it is a safe assumption to make.
 
 In the second image, we compare median prices east of Second Avenue (the blue "treatment" line) to those on the rest of the Upper East Side (orange "control" line). As we can see, the Upper East Side is categorically more expensive than Yorkville, though otherwise prices have varied similarly (albiet at different scales) over time. The black vertical line is January 1, 2017 - the day the Second Avenue line opened. Another way of thinking of this - the experimental way - is that it's the day our "intervention" actually occurred.
 
 
 ### Method #2: repeat-sales
-Another popular method is [repeat-sales](https://www.investopedia.com/terms/r/repeatsales-method.asp?lgl=myfinance-layout-no-ads). The idea here is that rather than comparing sales and controlling for features that may affect sale price (e.g. apartment square footage), we can just look at the changes in sale price _of the same apartment_. If we think about this as a regression, where we include factors that control for substantive features, by taking the delta, the substantive features drop out of the equation and we're just left with time-based changes. In our case, we looked at the "distance improvement to nearest subway" between the two sales. That is, if the first sale in a pair occurred _before_ the line opened anthe second sale occurred _after_, we took a look at how much shorter that apartment's walking time to the subway was now that the Second Avenue line was open - as compared to their old walk to the 4/5/6 line. Using this method, areas on the far east side of Yorkville will see the greatest price jump, as they have the most dramatic distance improvements.
+Another popular method is [repeat-sales](https://www.investopedia.com/terms/r/repeatsales-method.asp?lgl=myfinance-layout-no-ads). The idea here is that rather than comparing sales and controlling for features that may affect sale price (e.g. apartment square footage), we can just look at the changes in sale price _of the same apartment_. If we think about this as a regression, where we include factors that control for substantive features, by taking the delta, the substantive features drop out of the equation and we're just left with time-based changes. 
 
-Going back to the above map, we can actually see the time-based variable we'll care about in the repeat-sales approach. In particular, we can see a heatmap of how much each property improved its walking distance to the nearest subway when the Second Avenue Subway opened. Red is "most improved" (so as we can see, properties on the far east side of the island gained the most in terms of travel distance improvement). Interestingly, the "green" areas on the map are actually still closer to the nearest 4/5/6 train stop. (Note: ignore the washed out area - even though eveything in it is red, this is not being correctly plotted).
+As an example, let's say we develop a linear model for housing price:
+
+$$
+price = x \cdot bedrooms + y \cdot n_bathrooms + z \cdot sale_year
+$$
+(caution! this is a bad model for a few reasons, but this is an example)
+
+And then, suppose we use this model to look at the sale of a 2br, 1bath apartment in 2007 and 2010:
+
+$$
+price_{2007} = x \ cdot 2 + y \ cdot 1 + z \ cdot 2007
+price_{2010} = x \ cdot 2 + y \ cdot 1 + z \ cdot 2010
+$$
+
+Now, if we want to look at the _change_, we could subtract the 2010 price from the 2007 price. Doing so with the model gives us:
+
+$$
+\delta_{price} = price_{2010} - price_{2007} = x \cdot (2 - 2) + y \cdot (1 - 1) + z \cdot (2010 - 2007)
+\delta_{price} = z \cdot (2010 - 2007)
+$$
+
+Because we're looking at the _exact same unit_, only time-based features, such as the year in this case, remain in the model of the price growth. This greatly simplifies our assumptions.
+
+In our case, we looked at the "distance improvement to nearest subway" between the two sales. That is, if the first sale in a pair occurred _before_ the line opened anthe second sale occurred _after_, we took a look at how much shorter that apartment's walking time to the subway was now that the Second Avenue line was open - as compared to their old walk to the 4/5/6 line. Using this method, areas on the far east side of Yorkville will see the greatest price jump, as they have the most dramatic distance improvements.
+
+<div>
+  <div style="float: left; width: 40%;">
+    <img src="https://github.com/sebscho/CA_SAS/blob/master/Figures/distance%20reduced.png?raw=true" style="width: 100%;" />
+  </div>
+</div>
+
+Looking back to this map, we can actually see the time-based variable we'll care about in the repeat-sales approach. In particular, we can see a heatmap of how much each property improved its walking distance to the nearest subway when the Second Avenue Subway opened. Red is "most improved" (so as we can see, properties on the far east side of the island gained the most in terms of travel distance improvement). Interestingly, the "green" areas on the map are actually still closer to the nearest 4/5/6 train stop. (Note: ignore the washed out area - even though eveything in it is red, this is not being correctly plotted).
 
 <div>
   <div style="float: left; width: 60%; background-color: white;">
@@ -99,10 +130,11 @@ It appears that we have a bit of work to do on the DID model. In particular, sim
 Something else we tried to do was calculate anticipation effects - basically, understand how much prices would go up in _expectance_ of the line's opening, rather than the actual opening itself. To do this, we essentially set another "cutoff" point 6 months in advance of the line's opening to see how much that sales increased before vs. after that point. Unfortunately, due to limitations with the Zillow API, we had trouble doing this - we weren't able to pull both information on apartments sold right before and right after the line's opening, so we opted for sales right after the line's opening.
 
 ### Repeat-sales
-We saw a statistically significant indicator that the SAS has increased property values. In particular, for every 100m of walkability improvement a given unit gained with the SAS opening, its growth factor increased .02% on average. This translates to 8% above-average growth for the units on the far east side of Yorkville, which got a ~400m walkability improvement to the nearest subway. So according to this model, a unit that would have sold for $400,000 at 86th and York is now worth ~$432,000 ... just by virtue of this subway line opening!
+We saw a statistically significant indicator that the SAS has increased property values. In particular, for every 100m of walkability improvement a given unit gained with the SAS opening, its growth factor increased 2% on average. This translates to 8% above-average growth for the units on the far east side of Yorkville, which got a ~400m walkability improvement to the nearest subway. So according to this model, a unit that would have sold for $400,000 at 86th and York is now worth ~$432,000 ... just by virtue of this subway line opening!\*
 
 With that said, we had some methodological issues. In theory, with repeat-sales, we should be able to account for the variation to a high degree. A [similar study](https://corpus.ulaval.ca/jspui/handle/20.500.11794/2928) in Montreal reported R^2 values of .7 for a baseline model - ours were significantly lower. I'm not sure why this is - perhaps different sized apartments are fundamentally different markets in New York, and we can't consider studio apartments in conjunction with 2-bedroom apartments, for example. 
 
+\* Note that our model is predicting the difference in _log_ prices here - which can also be written as a ratio. So, if a house's resale price grew $x$ percent, then the ratio of $p_{new} / p_{old} = 1 + (x / 100) $. So, with 8% growth and taking the log, as it turns out, $log(1.08) ~ .08$. This works more generally with growth factors < 25% (log(1.25) ~ .22) , so we're fairly safe to approximate here.
 
 ## The Conclusion
 You don't have to be a real-estate professional to know that the Second Avenue Subway has jacked up values in Yorkville - and you didn't have to be an industry professional to have guessed that would happen before the line opened. What's interesting here is that we've attempted to quantify exactly how much transit accessibility improves property values - and the answer is that it improves them quite substantially. We can use this information to better fund, plan, and develop new infrastructure around the city, especially as the city begins to develop the next phase of the Second Avenue line's opening. We hope it may be useful for policymakers to better understand the implications of these infrastructure decisions.
