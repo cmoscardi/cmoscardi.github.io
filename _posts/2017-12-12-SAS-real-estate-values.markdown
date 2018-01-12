@@ -104,7 +104,7 @@ $$
 
 Because we're looking at the _exact same unit_, only time-based features, such as the year in this case, remain in the model of the price growth. This greatly simplifies our assumptions.
 
-In our case, we looked at the "distance improvement to nearest subway" between the two sales. That is, if the first sale in a pair occurred _before_ the line opened anthe second sale occurred _after_, we took a look at how much shorter that apartment's walking time to the subway was now that the Second Avenue line was open - as compared to their old walk to the 4/5/6 line. Using this method, areas on the far east side of Yorkville will see the greatest price jump, as they have the most dramatic distance improvements.
+In our case, we looked at the "distance improvement to nearest subway" between the two sales. That is, if the first sale in a pair occurred _before_ the line opened and the second sale occurred _after_, we took a look at how much shorter that apartment's walking time to the subway was now that the Second Avenue line was open - as compared to their old walk to the 4/5/6 line. Using this method, areas on the far east side of Yorkville will see the greatest price jump, as they have the most dramatic distance improvements.
 
 <div>
   <div style="float: left; width: 40%;">
