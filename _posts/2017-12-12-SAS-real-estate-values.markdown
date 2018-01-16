@@ -20,7 +20,11 @@ The data for this project is easily accessible:
 2. Zillow data, to get some meta-information about each property. [Sarah](https://github.com/sebscho/CA_SAS/blob/master/Zillow%2BAPI%2BCalls%20(1).ipynb) put together a Jupyter notebook that scrapes the API for us.
 3. Some [subway GIS data](https://www.baruch.cuny.edu/confluence/display/geoportal/NYC+Mass+Transit+Spatial+Layers) to tie it all together. Hao did this work in ArcGIS, though it wouldn't be hard to replicate in GeoPandas, my preferred geospatial analysis library.
 
-This left us with a dataset of sales with the following baseline features:
+We had two main issues: 
+1. The DoF sales data is messy. For starters, it's a bit inconsistent with the way it labels apartment numbers. Additionally, (I think) it includes things like deed transfers, e.g. when someone passes ownership of an apartment on to a family member, as low-valued sales.
+2. Zillow is not free, and when attempting to pull down information on the apartments we were able to uncover in the DoF data, was inconsistent with what information we could get back.
+
+Working through all this, we were still able to get ~1700 sales records from the past ten years - January 2008 through October 2017. This left us with a dataset of sales with the following baseline features:
 
 - Sale date
 - Sale price
