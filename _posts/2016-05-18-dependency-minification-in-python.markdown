@@ -15,18 +15,31 @@ Dependencies and graphing them
 --
 So, maybe you've thought about dependencies before. We have. As it turns out, we can think of dependencies as a directed acyclic graph (often called by their abbreviation, DAG).\* In this graph, each package is a node, and if package X depends on package Y, we have a (directed) edge (X, Y). 
 
-See those nodes at the far left - the ones that represent packages which aren't dependencies for any other packages? We call those "source nodes" (or source packages, for the purposes of this explanation). Those are the nodes we care about, as they represent the packages we really care about. To find this set of packages, we can take the complement (in graph theory parlance, "the cut") of the subset of all nodes which are specified as another package's dependency. This leaves us with our source packages.
+If you look at such a graph, you'll find nodes that represent packages which aren't dependencies for any other packages? We call those "source nodes" (or source packages, for the purposes of this explanation). Those are the nodes we care about, as they represent the packages we really care about. To find this set of packages, we can take the complement (in graph theory parlance, "the cut") of the subset of all nodes which are specified as another package's dependency. This leaves us with our source packages.
 
 
 \* We could conceivably have two packages which are "tightly coupled" - i.e. depend on each other - but that's typically considered pretty bad practice. We know of no examples of this in anaconda's repositories.
 
 Code
 --
-Here's how we do this in practice.
+First, without further ado, here is the package itself:
+- https://github.com/thedataincubator/conda_minifier
 
-- Parse all packages/versions in `environment.yml`
+And, if you want to just `pip install`...
+```
+pip install git+https://github.com/thedataincubator/conda_minifier.git@master
+```
 
-- Get the dependencies of each package and store them in a set (so we know which packages appeared as a dependency at least once).
+Then, usage is quite simple.
+```
+python -m conda_minifier path_to_environment.yml > minified_environment.yml
+```
+
+Now that you've got the goods, here is a bit more about how we do this in practice.
+
+1. Parse all packages/versions in `environment.yml`
+
+2. Get the dependencies of each package and store them in a set (so we know which packages appeared as a dependency at least once).
 
 We do this with `conda info [package_name]`. Here's a sample output:
 {% highlight bash %}
@@ -76,7 +89,7 @@ dependencies:
 {% endhighlight %}
 As you can see in the source code, we chose to use python to scrape this output.
 
-- Take the complement of all requirements and every package that appears as a dependency, making sure to preserve version for these "important" packages.
+3. Take the complement of all requirements and every package that appears as a dependency, making sure to preserve version for these "important" packages.
 It's a simple snippet:
 
 {% highlight python %}
@@ -89,16 +102,15 @@ def calc_difference(packages, deps):
   return {n: packages[n] for n in source_names}
 {% endhighlight %}
 
---- 
+And that's it! We have a minified environment. Simple, right?
+
 
 One other thing
 ===
-It's worth noting that our minifier also removes the "binary" package spec at the end of the version string. For example, a numpy binary in the anaconda repo is explicitly located by the following string:
-[example string here]
-We remove that last bit, and make conda resolve depending on the machine we're on, so it looks like this:
-[fixed string here]
+It's worth noting that our minifier also removes the "binary" package spec at the end of the version string. For example, OSX and Linux may have different binaries compiled for each respective platform.
+We remove that platform-specific bit, and make conda resolve depending on the machine we're on.
 
 
-Pitfalls
+Pitfalls / Gotchas
 === 
-We've come across some interesting cases. For example, what if we want to include [bokeh](), which depends on numpy, scipy, and pandas? Suddenly, we have to explicitly declare our PyData packages. Since pandas depends on numpy and scipy (VERIFY), even including pandas means we don't specify our numpy or scipy versions. Our suggestion: if you know you need numpy 1.9.2, hard-specify that version after running this minifier.
+We've come across some interesting cases. For example, what if we want to include Bokeh, which depends on numpy, scipy, and pandas? Suddenly, we have to explicitly declare our PyData packages, since otherwise our "minimum set" non-transitive dependencies is just Bokeh. Since pandas depends on numpy and scipy, even including pandas means we don't specify our numpy or scipy versions. Our suggestion: if you know you need numpy 1.9.2, hard-specify that version after running this minifier.
