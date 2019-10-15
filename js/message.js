@@ -26,6 +26,7 @@ var fix_backspace = function() {
 var index_input_handler = function() {
   $("#cursor").addClass("flash");
 
+
   $("body").keydown( function(event) {
     if(event.keyCode==13 &&
       ($("#input").text().toLowerCase().indexOf("y")!=-1)){ 
