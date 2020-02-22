@@ -13,7 +13,7 @@ categories: blog
 Read on to learn more about what I did to come to this conclusion.
 
 ### The Data
-Unlike DDOT (who have presumably been archiving their bus location data since the beginning of time, and should make their archive public), a friend and I have been archiving every real-time bus ping since March 2019. The way this works is that every minute or so, any given bus will ping its latest location to a central server. Our archiving script runs on minute-ly intervals and catches those pings, saving them off into files which you can access [here](https://busdata-00-us-west-2.s3-us-west-2.amazonaws.com/). 
+Unlike DDOT (who have presumably been archiving their bus location data since the beginning of time, and should make their archive public), a friend has been archiving every real-time bus ping since March 2019 ([thanks, Mark!](https://github.com/markongithub/bus_data_archive)). The way this works is that every minute or so, any given bus will ping its latest location to a central server. Our archiving script runs on minute-ly intervals and catches those pings, saving them off into files which you can access [here](https://busdata-00-us-west-2.s3-us-west-2.amazonaws.com/). 
 
 For this analysis, I look at data from March 2019 until December 31, 2019.
 
