@@ -145,3 +145,5 @@ At this point, it would be interesting to perform a difference-in-difference exp
 With that being said, looking at these results thus far, it's really not clear that these bus lanes have helped the buses move faster through this corridor. Transit advocacy groups in the area [have been frustrated](https://ggwash.org/view/73622/rush-hour-on-a-single-day-nearly-300-violations-in-the-new-h-and-i-bus-only-lanes) by enforcement in the lanes -- this could certainly be the underlying issue here. 
 
 As DDOT begins to install bus lanes elsewhere in the city (woohoo, 14th st NW!), I think a similar analysis to this one can help shed light on how well these measures are actually working.
+
+Plus, on November 12, [the lanes on H and I streets became permanent](https://www.washingtonpost.com/transportation/2019/09/20/dc-makes-h-i-streets-bus-lanes-permanent-all-day/) and enforced 7AM-7PM! Looking at the results above, you can start to see improvement. Check back in a few months and I'll put up some graphs of how well that has been working.
