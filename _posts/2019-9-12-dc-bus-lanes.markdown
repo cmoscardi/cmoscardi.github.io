@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "How well do red-painted bus lanes work?"
-date:   2019-09-12 17:20:40
+title:  "How well do DC's red-painted bus lanes work?"
+date:   2020-02-20 17:20:40
 categories: blog
 ---
 
