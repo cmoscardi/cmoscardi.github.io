@@ -1,18 +1,25 @@
-div:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-div { display: inline-block; margin: 0 0 8px 0; }
 /* Hides from IE-mac \*/
-html div { height: 1%; }
-div { display: block; }
 
-.clear {
-  clear: both;
-}
 
-body {
+/*body {
   width: 100%;
   background-color: #003c1a;
   color: #60D5AC;
   font-family: 'Monaco', monospace;
+}
+*/
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin-top: 0px;
+  margin-left: 0px;
+  font-size: 1.2em;
 }
 
 .content {
@@ -21,8 +28,8 @@ body {
 
 h1 {
 
-  font-family: 'Lato', sans-serif;
-  color: #DFEBE2;
+  /*font-family: 'Lato', sans-serif;*/
+  /*color: #DFEBE2;*/
   font-weight:900;
 }
 
@@ -33,6 +40,7 @@ ul {
 }
 li {
   padding-left: 1em;
+  padding-right: .5em;
   text-indent: -1em;
 }
 
@@ -42,7 +50,12 @@ ul li:before {
 }
 
 a {
-  color: #60D5AC;
+  color: black;
+}
+
+table, th, td {
+  border: 1px solid;
+  border-collapse: collapse;
 }
 .nounderline {
   text-decoration: none;
@@ -55,32 +68,41 @@ input {
   border: none;
 }
 
-#nav {
-  position: relative; 
-  float: left;
-  width: 30%;
+#container {
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
-#menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 30%;
+#nav {
+  display: flex;
+  width: 20%;
+  background-color: #D3D3D3;
+  align-items: stretch;
+  margin-right: 20px;
+  padding-bottom: 10px;
 }
 #content {
   position: relative;
   float: left;
   width: 60%;
+  background-color: white;
 }
 
 @media (max-width: 1316px) {
+  #container {
+    flex-direction: column;
+  }
   #nav {
     width: 100%;
+    font-size: .8em;
+  }
+  #nav li {
+    margin: 0px;
   }
   #content {
     width: 100%;
   }
   #menu {
-    position: static;
     width: 100%;
   }
 }
@@ -94,6 +116,7 @@ input {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
+  text-wrap-style: wrap;
 }
 
 
@@ -141,23 +164,9 @@ input {
   100% {background-color:#60D5AC;}        
 }
 
-.clearfix:after {
-    content: ".";
-    display: block;
-    clear: both;
-    visibility: hidden;
-    line-height: 0;
-    height: 0;
-}
 
-.clearfix {
-    display: table;
-}
 
 html[xmlns] .clearfix {
     display: block;
 }
 
-* html .clearfix {
-    height: 1%;
-}

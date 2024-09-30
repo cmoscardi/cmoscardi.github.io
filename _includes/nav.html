@@ -1,22 +1,43 @@
+<style>
+  .post-link:before {
+    content: "";
+  }
+  .post-link {
+    margin-top: .5em;
+    margin-bottom: .5em;
+    font-size: .9em;
+  }
+</style>
 <div id="menu" class="clearfix">   
+  {% if layout.show_posts %}
+  <h2> Christian Moscardi's Blog</h2>
+  {% endif %}
   <ul style:"display:none;" >
     {% if layout.pre_message %}
     <li id="message">{{page.pre_message}}</li>
     {% endif %}
     {% if layout.show_posts %}
-      <li id="0">
+      <li class="post-link" id="0">
         0) 
         <a class="nounderline" href="/home.html?noType=true">Back to Home</a>
       </li>
+      <hr />
+      <h3>Blog posts</h3>
       {% for post in site.posts %}
-        <li id="{{forloop.index}}">
+        <li class="post-link" id="{{forloop.index}}">
+          {% if {{post.title}} == {{page.title}} %}
+            <b>
+          {% endif %}
           {{ forloop.index }})
           <a class="nounderline" href="{{post.url}}"> {{post.title}}</a>
+          {% if {{post.title}} == {{page.title}} %}
+            </b>
+          {% endif %}
         </li>
       {% endfor %}
     {% else %}
       {% for link in layout.links %}
-      <li id="{{forloop.index}}" class="option">
+      <li id="{{forloop.index}}" class="option post-link">
         <a class="nounderline" href="{{link.href}}">
           {{forloop.index}}) {{link.name}}
         </a>
