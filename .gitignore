@@ -4,3 +4,4 @@ _site
 *.swp
 
 .ipynb_checkpoints
+*.DS_store
