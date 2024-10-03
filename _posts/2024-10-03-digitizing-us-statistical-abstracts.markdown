@@ -2,7 +2,7 @@
 layout: post
 title:  "Fine-tuning OCR works really well: the Statistical Abstracts of the United States"
 subtitle: "" 
-date:   2024-04-11 17:20:40
+date:   2024-10-03 17:20:40
 categories: blog
 ---
 <style>
