@@ -19,7 +19,7 @@ Here's what they look like:
 <img alt="image of statistical abstract table with cheeky caption" src="/static/images/stat_abstracts/pg1_abstract_overview.png" style="width: 100%;" />
 </figure>
 
-The Bureau has scanned these documents -- so in that sense, they are already digitized -- but has not attempted to perform OCR (to make the documents easily searchable) or publish the tables in a digitally native format (to make the data easier to work with). I wanted to give it a try. I'm not sure why, but I find this problem captivating -- it really _feels_ like something computers should be able to do well.
+The Census Bureau has scanned these documents -- so in that sense, they are already digitized -- but has not attempted to perform OCR (to make the documents easily searchable) or publish the tables in a digitally native format (to make the data easier to work with). I wanted to give it a try. I'm not sure why, but I find this problem captivating -- it really _feels_ like something computers should be able to do well.
 
 ## What did I want to do?
 To start, I wanted to make these into "searchable PDFs" -- essentially, OCR the content, and especially the numbers, at a high quality. Presumably this would, at the very least, help my friend find the numbers he's looking for more easily.
