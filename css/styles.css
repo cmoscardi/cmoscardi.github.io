@@ -88,7 +88,7 @@ input {
   background-color: white;
 }
 
-@media (max-width: 1316px) {
+@media (max-width: 1024px) {
   #container {
     flex-direction: column;
   }
