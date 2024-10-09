@@ -11,7 +11,7 @@ td {
 }
 </style>
 
-Several years ago, a friend working on his PhD asked if I could help digitize the [Statistical Abstracts of the United States](https://www.census.gov/library/publications/time-series/statistical_abstracts.html) in order to spare him the hassle of going through these documents page-by-page. These abstracts are a historical Census Bureau dataset that includes many interesting things, like how many chickens were in the United States in 1920 (the Chicken Census is now conducted and published by USDA). If you want to know, there were ~360 million chickens in the United States in 1920.
+Several years ago, a friend working on his PhD asked if I could help digitize the [Statistical Abstracts of the United States](https://www.census.gov/library/publications/time-series/statistical_abstracts.html) in order to spare him the hassle of going through these documents page-by-page. These abstracts are a historical Census Bureau dataset that includes many interesting things, like how many chickens were in the United States in 1920. If you want to know, there were ~360 million chickens in the United States in 1920. (The Chicken Census is now conducted and published by USDA.)
 
 Here's what they look like:
 
