@@ -20,7 +20,7 @@ Here is what I ask:
 > update src/app/page.tsx to be more descriptive and not use the default next.js styles
 ```
 
-I do this with some curiosity, as it's obviously a generic prompt. What does "be more descriptive" mean? What styles would it pick by default? Well, here's what it get back:
+I do this with some curiosity, as it's obviously a generic prompt. What does "be more descriptive" mean? What styles would it pick by default? Well, here's what I get back:
 
 <div style="width: 100%;">
   <img style="width: 100%;" src="/static/images/saas_landing_page.png" />
