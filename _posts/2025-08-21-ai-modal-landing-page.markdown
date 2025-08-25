@@ -29,7 +29,7 @@ I do this with some curiosity, as it's obviously a generic prompt. What does "be
 Dear god, it's a SaaS marketing page. Trust me, if you scroll down, it's nearly pitch-perfect.
 
 
-When I put in this prompt, I had limited-to-no expectations about what would come out. I just figured prompting would be an easy way to get something different, a starting point that I could work from. The only point I wanted to make with this post, really, is that I guess the internet's modal landing page is a SaaS marketing page. Or, more likely, the modal user of Claude Code is making a SaaS, Anthropic knows this, and has tuned their model, updated their training data, etc. appropriately. It was pretty interesting to see regardless.
+When I put in this prompt, I had limited-to-no expectations about what would come out. I just figured prompting would be an easy way to get something different, a starting point that I could work from. The only point I wanted to make with this post, really, is that I guess the internet's modal landing page (conditioned on being a next.js app for AI/ML etc) is a SaaS marketing page. Or, more likely, the modal user of Claude Code is making a SaaS, Anthropic knows this, and has tuned their model, updated their training data, etc. appropriately. It was pretty interesting to see regardless.
 
 Of course, I then updated my prompt to get what I actually wanted. However, _I hadn't known what I had wanted_ prior to seeing this SaaS page. This gave me a bit of a creative jump start, similar to how you might [go scroll dribbble](https://dribbble.com/tags/landing-page) for some ideas. And that was helpful.
 
